@@ -8,7 +8,13 @@
 
 #ifndef PCH_H
 #define PCH_H
+//负责输入输出不解释
+#include <fstream>
+#include <iostream>
 
-// TODO: 添加要在此处预编译的标头
+//负责emmm输出输入之外的其他东西
+#include <vector>
+#include <map>
+#include <string>
 
 #endif //PCH_H
