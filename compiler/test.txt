@@ -1,5 +1,5 @@
 int main() {
-	print("hhhh込込込込");
+	print("hhhh");
 	return 0;//nihao
 	/*jinao*/
-}/*
+}}

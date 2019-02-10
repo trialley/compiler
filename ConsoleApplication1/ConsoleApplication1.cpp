@@ -1,4 +1,4 @@
-/*************Written By Zzg************/
+ï»¿/*************Written By Zzg************/
    /*******Date : 11,25,2017********/
 
 #include <iostream>
@@ -6,17 +6,17 @@
 #include <stdio.h>
 
 using namespace std;
-string KEYWORD[15] = { "if","else","void","return","while","then","for","do",      //¹Ø¼ü×Ö
+string KEYWORD[15] = { "if","else","void","return","while","then","for","do",      //å…³é”®å­—
 					"int","char","double","float","case","cin","cout" };
-char SEPARATER[8] = { ';',',','{','}','[',']','(',')' };    //·Ö¸ô·û
-char OPERATOR[8] = { '+','-','*','/','>','<','=','!' };     //ÔËËã·û
-char FILTER[4] = { ' ','\t','\r','\n' };                    //¹ýÂË·û
-const int IDENTIFIER = 100;         //±êÊ¶·ûÖµ
-const int CONSTANT = 101;           //³£ÊýÖµ
-const int FILTER_VALUE = 102;       //¹ýÂË×Ö·ûÖµ
+char SEPARATER[8] = { ';',',','{','}','[',']','(',')' };    //åˆ†éš”ç¬¦
+char OPERATOR[8] = { '+','-','*','/','>','<','=','!' };     //è¿ç®—ç¬¦
+char FILTER[4] = { ' ','\t','\r','\n' };                    //è¿‡æ»¤ç¬¦
+const int IDENTIFIER = 100;         //æ ‡è¯†ç¬¦å€¼
+const int CONSTANT = 101;           //å¸¸æ•°å€¼
+const int FILTER_VALUE = 102;       //è¿‡æ»¤å­—ç¬¦å€¼
 
 
-/**ÅÐ¶ÏÊÇ·ñÎª¹Ø¼ü×Ö**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºå…³é”®å­—**/
 bool IsKeyword(string word) {
 	for (int i = 0; i < 15; i++) {
 		if (KEYWORD[i] == word) {
@@ -25,7 +25,7 @@ bool IsKeyword(string word) {
 	}
 	return false;
 }
-/**ÅÐ¶ÏÊÇ·ñÎª·Ö¸ô·û**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºåˆ†éš”ç¬¦**/
 bool IsSeparater(char ch) {
 	for (int i = 0; i < 8; i++) {
 		if (SEPARATER[i] == ch) {
@@ -35,7 +35,7 @@ bool IsSeparater(char ch) {
 	return false;
 }
 
-/**ÅÐ¶ÏÊÇ·ñÎªÔËËã·û**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºè¿ç®—ç¬¦**/
 bool IsOperator(char ch) {
 	for (int i = 0; i < 8; i++) {
 		if (OPERATOR[i] == ch) {
@@ -44,7 +44,7 @@ bool IsOperator(char ch) {
 	}
 	return false;
 }
-/**ÅÐ¶ÏÊÇ·ñÎª¹ýÂË·û**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºè¿‡æ»¤ç¬¦**/
 bool IsFilter(char ch) {
 	for (int i = 0; i < 4; i++) {
 		if (FILTER[i] == ch) {
@@ -53,22 +53,22 @@ bool IsFilter(char ch) {
 	}
 	return false;
 }
-/**ÅÐ¶ÏÊÇ·ñÎª´óÐ´×ÖÄ¸**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºå¤§å†™å­—æ¯**/
 bool IsUpLetter(char ch) {
 	if (ch >= 'A' && ch <= 'Z') return true;
 	return false;
 }
-/**ÅÐ¶ÏÊÇ·ñÎªÐ¡Ð´×ÖÄ¸**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºå°å†™å­—æ¯**/
 bool IsLowLetter(char ch) {
 	if (ch >= 'a' && ch <= 'z') return true;
 	return false;
 }
-/**ÅÐ¶ÏÊÇ·ñÎªÊý×Ö**/
+/**åˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—**/
 bool IsDigit(char ch) {
 	if (ch >= '0' && ch <= '9') return true;
 	return false;
 }
-/**·µ»ØÃ¿¸ö×ÖµÄÖµ**/
+/**è¿”å›žæ¯ä¸ªå­—çš„å€¼**/
 template <class T>
 int value(T *a, int n, T str) {
 	for (int i = 0; i < n; i++) {
@@ -76,14 +76,14 @@ int value(T *a, int n, T str) {
 	}
 	return -1;
 }
-/**´Ê·¨·ÖÎö**/
+/**è¯æ³•åˆ†æž**/
 void analyse(FILE * fpin) {
 	char ch = ' ';
 	string arr = "";
 	while ((ch = fgetc(fpin)) != EOF) {
 		arr = "";
-		if (IsFilter(ch)) {}              //ÅÐ¶ÏÊÇ·ñÎª¹ýÂË·û
-		else if (IsLowLetter(ch)) {       //ÅÐ¶ÏÊÇ·ñÎª¹Ø¼ü×Ö
+		if (IsFilter(ch)) {}              //åˆ¤æ–­æ˜¯å¦ä¸ºè¿‡æ»¤ç¬¦
+		else if (IsLowLetter(ch)) {       //åˆ¤æ–­æ˜¯å¦ä¸ºå…³é”®å­—
 			while (IsLowLetter(ch)) {
 				arr += ch;
 				ch = fgetc(fpin);
@@ -91,22 +91,22 @@ void analyse(FILE * fpin) {
 			//fseek(fpin,-1L,SEEK_CUR);
 			if (IsKeyword(arr)) {
 				printf("%3d    ", value(KEYWORD, 15, arr));
-				cout << arr << "  ¹Ø¼ü×Ö" << endl;
+				cout << arr << "  å…³é”®å­—" << endl;
 			}
 			else
 			{
 				printf("%3d    ", IDENTIFIER);
-				cout << arr << "  ±êÊ¶·û" << endl;
+				cout << arr << "  æ ‡è¯†ç¬¦" << endl;
 			}
 		}
-		else if (IsDigit(ch)) {           //ÅÐ¶ÏÊÇ·ñÎªÊý×Ö
+		else if (IsDigit(ch)) {           //åˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—
 			while (IsDigit(ch) || (ch == '.'&&IsDigit(fgetc(fpin)))) {
 				arr += ch;
 				ch = fgetc(fpin);
 			}
 			fseek(fpin, -1L, SEEK_CUR);
 			printf("%3d    ", CONSTANT);
-			cout << arr << "  ÕûÐÎÊý" << endl;
+			cout << arr << "  æ•´å½¢æ•°" << endl;
 		}
 		else if (IsUpLetter(ch) || IsLowLetter(ch) || ch == '_') {
 			while (IsUpLetter(ch) || IsLowLetter(ch) || ch == '_' || IsDigit(ch)) {
@@ -115,7 +115,7 @@ void analyse(FILE * fpin) {
 			}
 			fseek(fpin, -1L, SEEK_CUR);
 			printf("%3d    ", CONSTANT);
-			cout << arr << "  ±êÊ¶·û" << endl;
+			cout << arr << "  æ ‡è¯†ç¬¦" << endl;
 		}
 		else switch (ch) {
 		case '+':
@@ -129,7 +129,7 @@ void analyse(FILE * fpin) {
 		{
 			arr += ch;
 			printf("%3d    ", value(OPERATOR, 8, *arr.data()));
-			cout << arr << "  ÔËËã·û" << endl;
+			cout << arr << "  è¿ç®—ç¬¦" << endl;
 			break;
 		}
 		case ';':
@@ -143,10 +143,10 @@ void analyse(FILE * fpin) {
 		{
 			arr += ch;
 			printf("%3d    ", value(SEPARATER, 8, *arr.data()));
-			cout << arr << "  ·Ö¸ô·û" << endl;
+			cout << arr << "  åˆ†éš”ç¬¦" << endl;
 			break;
 		}
-		default:cout << "\"" << ch << "\":ÎÞ·¨Ê¶±ðµÄ×Ö·û£¡" << endl;
+		default:cout << "\"" << ch << "\":æ— æ³•è¯†åˆ«çš„å­—ç¬¦ï¼" << endl;
 		}
 	}
 
@@ -155,18 +155,18 @@ int main()
 {
 	char inFile[40];
 	FILE *fpin;
-	cout << "ÇëÊäÈëÔ´ÎÄ¼þÃû£¨°üÀ¨Â·¾¶ºÍºó×º£©:";
+	cout << "è¯·è¾“å…¥æºæ–‡ä»¶åï¼ˆåŒ…æ‹¬è·¯å¾„å’ŒåŽç¼€ï¼‰:";
 	while (true) {
 		cin >> inFile;
 		if ((fpin = fopen(inFile, "r")) != NULL)
 			break;
 		else {
-			cout << "ÎÄ¼þÃû´íÎó£¡" << endl;
-			cout << "ÇëÊäÈëÔ´ÎÄ¼þÃû£¨°üÀ¨Â·¾¶ºÍºó×º£©:";
+			cout << "æ–‡ä»¶åé”™è¯¯ï¼" << endl;
+			cout << "è¯·è¾“å…¥æºæ–‡ä»¶åï¼ˆåŒ…æ‹¬è·¯å¾„å’ŒåŽç¼€ï¼‰:";
 		}
 
 	}
-	cout << "------´Ê·¨·ÖÎöÈçÏÂ------" << endl;
+	cout << "------è¯æ³•åˆ†æžå¦‚ä¸‹------" << endl;
 	analyse(fpin);
 	return 0;
 }

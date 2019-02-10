@@ -10,12 +10,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
-
+#include <regex>//正则表达式
 using namespace std;
-
+enum L_STAGE { OPRATER, NUM, SPACE, LETTER,COMMENT};
 /*保存一个单词结果*/
 struct L_pair{
-	char L_type;//保存单词的类型
+	enum L_STAGE L_type;//保存单词的类型
 	int num;//保存单词的位置
 	string content;//保存单词的内容
 };
@@ -25,9 +25,18 @@ typedef vector<L_pair> L_table;
 /*************************************************
 函数名称:Lexer
 描述:词法分析的开放接口，用输入字符串并返回结果
-调用:
+调用:NoComment
 输入: string source
 返回:L_table=vector<L_pair>
 *************************************************/
 L_table Lexer(string source);
+
+/*************************************************
+函数名称:NoComment
+描述:词法分析的第一步：去除所有注释
+调用:
+输入:string 源代码
+返回:string 去除注释的源代码 
+*************************************************/
+string NoComment(string source);
 

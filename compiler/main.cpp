@@ -62,16 +62,21 @@ int main(){
 	path = "./test.txt";
     /*cout << "请输入源代码文件的相对路径：\n";
 	cin >> path;*/
-	cout << "这是您输入的地址：\n" << path << endl;
+	cout << "------------------文件的地址-----------------\n" << path << endl;
 
 	/*通过相对路径获得内容并打印*/
 	string source = readFileIntoString(path);
-	cout << "这是文件的内容：\n" << source << endl;
+	cout << "------------------文件的内容-----------------\n" << source << endl;
 
-	cout << "-------------词法分析函数输出开始------------\n";
 	/*通过文件内容获取分词信息并打印*/
-	
+	cout << "-------------------词法分析------------------\n";
 	L_table LexResult = Lexer(source);
-	 
+
+	int l = LexResult.size();
+	cout << "内容" << "\t" << "类型" << "\t" << "位置" << endl;
+	for (int i = 0; i < l; i++) {
+		cout << LexResult[i].content << "\t" << LexResult[i].L_type << "\t" << LexResult[i].num << endl;
+	}
+
 	return 0;
 }
