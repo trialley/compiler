@@ -1,0 +1,5 @@
+int main() {
+	print("hhhh込込込込");
+	return 0;//nihao
+	/*jinao*/
+}/*
